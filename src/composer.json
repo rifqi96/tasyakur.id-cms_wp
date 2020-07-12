@@ -1,0 +1,12 @@
+{
+    "name": "rifqi96/tasyakur.id-wp_cms",
+    "authors": [
+        {
+            "name": "Rifqi Ruhyattamam",
+            "email": "rifqi96@yahoo.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.0"
+    }
+}

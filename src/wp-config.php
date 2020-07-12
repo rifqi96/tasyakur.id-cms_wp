@@ -1,4 +1,15 @@
 <?php
+// Make sure autoload is there
+if ( !file_exists( __DIR__ . '/vendor/autoload.php' ) )
+    throw new Exception('Autoload is not found. Make sure to do composer install.');
+// Load the autoload
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Load dotenv
+// createUnsafeImmutable() to enable getenv(), otherwise we can just use createUImmutable()
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->load();
+
 define( 'WP_CACHE', true ) ;
 /**
  * The base configuration for WordPress
