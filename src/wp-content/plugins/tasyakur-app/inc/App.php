@@ -163,6 +163,7 @@ final class App extends Container
             Providers\PostTypeProducts\PostTypeProducts::class,
             Providers\PostTypeTestimonials\PostTypeTestimonials::class,
             Providers\SvgEnabler\SvgEnabler::class,
+            Providers\SettingsContact\SettingsContact::class,
         ];
     }
 }
