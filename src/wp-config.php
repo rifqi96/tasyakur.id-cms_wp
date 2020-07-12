@@ -114,8 +114,8 @@ define('WP_SITEURL', getenv('SITE_URL'));
  * By default, WordPress creates a new set of images every time you edit an image and when you restore the original,
  * it leaves all the edits on the server.
  */
-define( 'WP_POST_REVISIONS', false );
-define( 'IMAGE_EDIT_OVERWRITE', true );
+define( 'WP_POST_REVISIONS', true );
+define( 'IMAGE_EDIT_OVERWRITE', false );
 
 /**
  * Kontinentalist REST API OAuth Configurations
