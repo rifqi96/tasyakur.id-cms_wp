@@ -1,0 +1,94 @@
+# Current docker latest stable version
+version: '3'
+
+# List of services that are going to be installed once it is run
+services:
+  # Nginx and The App service
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile
+      args:
+        - ENVIRONMENT=${ENVIRONMENT}
+    # Keeps refreshing every changes happen in particular directories
+    # We need to be kept updated with the app directory
+    volumes:
+      - './src:/var/www/html'
+      - './etc/nginx/logs:/var/log/nginx'
+    ports:
+      - '80:80'
+    # Restart the server if it's crashing
+    restart: always
+    container_name: 'nginx'
+  # PHP-FPM 7.3 service
+  php:
+    build:
+      context: .
+      dockerfile: php.Dockerfile
+      args:
+        - GA_CREDENTIALS_PATH=${GA_CREDENTIALS_PATH}
+        - PHP_OPCACHE_VALIDATE_TIMESTAMPS=${PHP_OPCACHE_VALIDATE_TIMESTAMPS}
+    volumes:
+      - './src:/var/www/html'
+      - './etc/php/logs:/var/log/php-fpm'
+    ports:
+      - '9000:9000'
+    restart: always
+    # Environment vars for the App
+    env_file:
+      - .env
+    container_name: 'php-fpm'
+  # Redis 5 Service
+  redis:
+    build:
+      context: .
+      dockerfile: redis.Dockerfile
+      args:
+        - REDIS_PASSWORD=${REDIS_PASSWORD}
+    ports:
+      - '6379:6379'
+    restart: always
+    container_name: 'redis'
+  # beanstalkd service in Alpine 3.7
+  beanstalkd:
+    build:
+      context: .
+      dockerfile: beanstalkd.Dockerfile
+    ports:
+      - '11300:11300'
+    privileged: true
+    restart: always
+    container_name: 'beanstalkd'
+  # MySQL 5.7 service
+  mysql:
+    build:
+      context: .
+      dockerfile: mysql.Dockerfile
+      args:
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - MYSQL_USER=${MYSQL_USER}
+        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        - MYSQL_DATABASE=${MYSQL_DATABASE}
+    ports:
+      - '3306:3306'
+    restart: always
+    volumes:
+      - './etc/mysql/db-data:/var/lib/mysql'
+    container_name: 'mysql'
+  # phpmyadmin service
+  # Open it through host:306
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    # Bind volume the uploads.ini file
+    volumes:
+        - './etc/phpmyadmin/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini'
+    depends_on:
+      - mysql
+    ports:
+      - '306:80'
+    restart: always
+    environment:
+      - PMA_HOST=${MYSQL_HOST}
+      - PMA_PORT=3306
+      - PHP_UPLOAD_MAX_FILESIZE=100MB
+    container_name: 'phpmyadmin'

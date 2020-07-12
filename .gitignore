@@ -1,0 +1,43 @@
+.DS_Store
+.htaccess
+.idea
+
+.env
+
+# Docker Files
+etc/mysql/db-data/*
+etc/nginx/logs/*
+etc/php/logs/*
+etc/beanstalkd/logs/*
+
+src/wp-config-production.php
+src/wp-config-staging.php
+src/wp-config-local.php
+src/wp-config-docker.php
+src/wp-content/uploads/
+src/wp-content/upgrade/
+src/wp-content/cache/
+src/wp-content/backups/
+*.log
+*.pid
+sitemap.xml
+
+# Elastic Beanstalk Files
+.elasticbeanstalk
+.ebextensions
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# easy-wp-smtp wordpress plugin - log files
+src/wp-content/plugins/easy-wp-smtp/*.txt
+
+# kontinentalist-app plugin
+# Exclude container cache files
+src/wp-content/plugins/tasyakur-app/inc/caches/*
+.phpunit.result.cache
+# Exclude vendor folder
+src/wp-content/plugins/tasyakur-app/vendor/
+
+# google credentials file
+etc/php/env_files/*
