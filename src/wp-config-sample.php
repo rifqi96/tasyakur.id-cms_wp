@@ -5,10 +5,16 @@ if ( !file_exists( __DIR__ . '/vendor/autoload.php' ) )
 // Load the autoload
 require_once __DIR__ . '/vendor/autoload.php';
 
-// Load dotenv
-// createUnsafeImmutable() to enable getenv(), otherwise we can just use createUImmutable()
-$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
-$dotenv->load();
+try {
+    // Load dotenv
+    // createUnsafeImmutable() to enable getenv(), otherwise we can just use createUImmutable()
+    $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+    $dotenv->load();
+}
+// Catch error if there's no .env file
+catch (\Dotenv\Exception\InvalidPathException $invalidPathException) {
+    // continue
+}
 
 define( 'WP_CACHE', true ) ;
 /**
