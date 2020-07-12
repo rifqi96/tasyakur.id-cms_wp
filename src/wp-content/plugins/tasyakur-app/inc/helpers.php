@@ -1,11 +1,8 @@
 <?php
+
 use Tasyakur\App;
 use Tasyakur\Core\Container;
 use Tasyakur\Core\Contracts\ContainerInterface;
-use Tasyakur\Services\MediaService;
-use Tasyakur\Services\PostService;
-use Tasyakur\Facades\MessageQueue\Queue;
-use Tasyakur\Queues\Messages\SendWpMailMessage;
 
 if (!function_exists('isJson')) {
     /**
@@ -334,11 +331,15 @@ function wp_mail($to, string $subject, string $message, $headers = '', $attachme
         return true;
     } catch (Exception $e) {
         echo "SendEmailHandler: Error sending email - {$e->getMessage()} - in {$e->getFile()} at line {$e->getLine()} - Trace: \n";
+        echo "<pre>";
         var_dump($e->getTrace());
+        echo "</pre>";
         return false;
     } catch (\Whoops\Exception\ErrorException $e) {
         echo "Email might have been sent, but an error occured. {$e->getMessage()} - in {$e->getFile()} at line {$e->getLine()} - Trace: \n";
+        echo "<pre>";
         var_dump($e->getTrace());
+        echo "</pre>";
         return false;
     }
 }

@@ -3,23 +3,14 @@
 namespace Tasyakur\Setup;
 
 use Tasyakur\Core\Contracts\ServiceProvider;
-use Tasyakur\Setup\Hooks\{AddPostTemplateToPostsList,
+use Tasyakur\Setup\Hooks\{
+    AddEmailReplyTo,
     ChangeEmailDefaultContentType,
     ChangeEmailSendFrom,
     ChangePasswordResetEmailSubject,
     CustomExcerptLength,
-    DisableImageEditor,
-    HideACF,
-    NotFoundRedirect,
-    RegisterPostRegion,
     RemoveCommentsOnPostsListTable,
-    RemoveStaticFrontPage,
-    RemoveWPImageSizes,
-    RenameTagsToTopics,
-    ReorderPostSubmenu,
-    ThemeSetups\Background,
-    ThemeSetups\HideAdminBar,
-    ThemeSetups\Logo};
+    ThemeSetups\HideAdminBar};
 
 class Setup extends ServiceProvider
 {
@@ -33,11 +24,12 @@ class Setup extends ServiceProvider
         add_action('after_setup_theme', [$this, 'setup']);
 
         $this->hooksLoader->addHooks(
-             ChangeEmailSendFrom::class,
+            ChangeEmailSendFrom::class,
             ChangePasswordResetEmailSubject::class,
             ChangeEmailDefaultContentType::class,
             CustomExcerptLength::class,
             // HideACF::class,
+            AddEmailReplyTo::class,
             RemoveCommentsOnPostsListTable::class,
         );
     }
