@@ -30,6 +30,12 @@ h1, h2, h3, h4, h5,
     width: 120px;
 }
 
+.featured-img {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
 a {
     color: #e0be61;
 }

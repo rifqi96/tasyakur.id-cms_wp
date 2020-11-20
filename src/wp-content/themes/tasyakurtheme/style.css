@@ -6,9 +6,3 @@ Description: Theme for tasyakur
 Version: 0.0.1
 Tags: Material design
 */
-
-.featured-img {
-    height: auto;
-    width: 100%;
-    object-fit: cover;
-}
