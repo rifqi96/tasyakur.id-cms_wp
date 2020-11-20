@@ -28,7 +28,7 @@
 
                 <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="100">
                     <div class="media-image">
-                        <a href="<?the_permalink()?>"><img src="<?=$image[0]?>" alt="<?=$imageAlt?>" class="img-fluid"></a>
+                        <a href="<?the_permalink()?>"><img src="<?=$image[0]?>" alt="<?=$imageAlt?>" class="featured-img img-fluid"></a>
                         <div class="media-image-body">
                             <h2 class="font-secondary text-uppercase"><a href="<?the_permalink()?>"><?=the_title()?></a></h2>
                             <span class="d-block mb-3">By <?=get_the_author()?> &mdash; <?=get_the_date()?></span>

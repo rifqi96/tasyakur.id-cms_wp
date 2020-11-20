@@ -26,9 +26,9 @@
                                     <?php
                                     $contactOptions = get_option('contact');
                                     ?>
-                                    <a href="https://instagram.com/<?=$contactOptions['instagram']?>" target="_blank" class="p-2"><span class="icon-instagram"></span></a>
-                                    <a href="<?=$contactOptions['facebook']?>" target="_blank" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
-                                    <a href="https://api.whatsapp.com/send?phone=<?=$contactOptions['wa_no']?>&text=<?=esc_html($contactOptions['wa_message'])?>" target="_blank" class="p-2"><span class="icon-whatsapp"></span></a>
+                                    <a href="https://instagram.com/<?=$contactOptions['instagram']?>" target="_blank" class="mr-2"><span class="icon-instagram"></span></a>
+                                    <a href="<?=$contactOptions['facebook']?>" target="_blank" class="mr-2"><span class="icon-facebook"></span></a>
+                                    <a href="https://api.whatsapp.com/send?phone=<?=$contactOptions['wa_no']?>&text=<?=esc_html($contactOptions['wa_message'])?>" target="_blank"><span class="icon-whatsapp"></span></a>
                                 </p>
                             </div>
                         </div>

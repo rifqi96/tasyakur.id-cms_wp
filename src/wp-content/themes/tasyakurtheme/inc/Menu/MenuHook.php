@@ -37,7 +37,6 @@ class MenuHook implements HooksInterface
      */
     public function specialMainNavClass ($classes, $item)
     {
-        get_post_type();
         if (in_array('current-page-ancestor', $classes) || in_array('current-menu-item', $classes) ){
             $classes[] = 'active ';
         }

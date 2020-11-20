@@ -62,7 +62,7 @@
                     <div class="col-md-6 col-lg-3 mb-5">
                         <div class="media-image">
                             <a href="<?the_permalink()?>">
-                                <img src="<?=esc_url($image[0])?>" alt="<?=$imageAlt?>" class="img-fluid">
+                                <img src="<?=esc_url($image[0])?>" alt="<?=$imageAlt?>" class="featured-img img-fluid">
                             </a>
                             <div class="media-image-body">
                                 <h2 class="font-secondary text-uppercase"><?=the_title()?></h2>

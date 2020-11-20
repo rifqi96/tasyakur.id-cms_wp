@@ -15,12 +15,12 @@ $termLinks = get_the_term_list(get_the_ID(), 'products_category', ' ', ' / ');
         </div>
     </div>
     <div class="row mb-5">
-        <div class="col-md-6 mb-4">
+        <div class="col-md-5 mb-4">
             <a href="<?=$featuredImage[0]?>" data-fancybox="gallery">
-                <img src="<?=$featuredImage[0]?>" alt="<?=$featuredImageAlt?>" class="img-fluid">
+                <img src="<?=$featuredImage[0]?>" alt="<?=$featuredImageAlt?>" class="featured-img img-fluid">
             </a>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
             <div class="product-description mb-2">
                 <?=$productDescription?>
             </div>
